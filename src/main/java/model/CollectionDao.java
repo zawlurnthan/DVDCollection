@@ -17,5 +17,5 @@ public interface CollectionDao {
     DVD editDvd(String id);
     List<DVD> getAllDvds();
     DVD getADvd(String id);
-//    DVD searchByTitle(String title);
+    DVD searchByTitle(String title);
 }
