@@ -73,6 +73,7 @@ public class CollectionController {
                     unknownCommand();
             }
         }
+        exitMessage();
     }
     
     private void createDVD() {
@@ -108,5 +109,9 @@ public class CollectionController {
     
     private void unknownCommand() {
         view.displayUnknownCommand();
+    }
+    
+    private void exitMessage() {
+        view.displayExitMessage();
     }
 }

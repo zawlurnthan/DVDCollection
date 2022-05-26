@@ -85,6 +85,27 @@ public class CollectionDaoImpl implements CollectionDao {
                 + dvd.getUserRating();
         return dvdAsText;
     }
+    
+        // Write text file by using PrinWriter
+    // Open file by using FileWriter to write 
+    private void writeTextFile() {
+        PrintWriter out;
+        try {
+            out = new PrintWriter(new FileWriter(COLLECTION_FILE));
+            String text;
+//            List<DVD> list = this.getAllDvds();
+            for (DVD dvd : collection.values()) {
+                // convert dvd object to text
+                text = marshallDVD(dvd);
+                out.println(text);
+                out.flush();
+            }
+            out.close();
+            
+        } catch (IOException e) {
+            System.out.println("Could not save dvd data");
+        }
+    }
         
     // convert text to object
     // read record from text file 
@@ -120,27 +141,6 @@ public class CollectionDaoImpl implements CollectionDao {
             
         } catch (FileNotFoundException e) {
             System.out.println("-_- Could not load collection data into memory."); 
-        }
-    }
-    
-    // Write text file by using PrinWriter
-    // Open file by using FileWriter to write 
-    private void writeTextFile() {
-        PrintWriter out;
-        try {
-            out = new PrintWriter(new FileWriter(COLLECTION_FILE));
-            String text;
-//            List<DVD> list = this.getAllDvds();
-            for (DVD dvd : collection.values()) {
-                // convert dvd object to text
-                text = marshallDVD(dvd);
-                out.print(text);
-                out.flush();
-            }
-            out.close();
-            
-        } catch (IOException e) {
-            System.out.println("Could not save dvd data");
         }
     }
 }

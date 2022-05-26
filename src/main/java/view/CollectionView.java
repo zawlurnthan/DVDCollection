@@ -20,7 +20,7 @@ public class CollectionView {
     } 
     
     public int printMenuAndGetSelection(){
-        io.print("\nMain Menu");
+        io.print("Main Menu");
         io.print("1. Add new DVD");
         io.print("2. Remove a DVD");
         io.print("3. Edit a DVD");
@@ -45,29 +45,32 @@ public class CollectionView {
     
     public void displayDVDList(List<DVD> list) {
         for (DVD dvd : list) {
-            io.print("\n"+dvd.getId());
-            io.print(dvd.getTitle());
-            io.print(dvd.getReleaseDate());
-            io.print(dvd.getMPAArating());
-            io.print(dvd.getDirector());
-            io.print(dvd.getStudio());
-            io.print(dvd.getUserRating());
-            System.out.println();
+            String info = String.format("#%s, %s, %s, %s, %s, %s, %s%n", 
+                    dvd.getId(),
+                    dvd.getTitle(),
+                    dvd.getReleaseDate(),
+                    dvd.getMPAArating(),
+                    dvd.getDirector(),
+                    dvd.getStudio(),
+                    dvd.getUserRating());
+            io.print(info);
         }
         io.readString("Please hit enter to continue.");
     }
     
     public void displayADVD(DVD dvd) {
         if (dvd != null) {
-            io.print("\n"+dvd.getId());
-            io.print(dvd.getTitle());
-            io.print(dvd.getReleaseDate());
-            io.print(dvd.getMPAArating());
-            io.print(dvd.getDirector());
-            io.print(dvd.getStudio());
-            io.print(dvd.getUserRating());
+            String info = String.format("#%s, %s, %s, %s, %s, %s, %s%n", 
+                    dvd.getId(),
+                    dvd.getTitle(),
+                    dvd.getReleaseDate(),
+                    dvd.getMPAArating(),
+                    dvd.getDirector(),
+                    dvd.getStudio(),
+                    dvd.getUserRating());
+            io.print(info);
         } else {
-            io.print("No such student");
+            io.print("No such a dvd.");
         }
         io.readString("Please hit enter to continue.");
     }
@@ -100,5 +103,9 @@ public class CollectionView {
     
     public void displayUnknownCommand() {
         io.print("\nUnknown Command!!!");
+    }
+    
+    public void displayExitMessage() {
+        io.print("Good Bye!");
     }
 }
