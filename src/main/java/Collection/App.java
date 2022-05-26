@@ -1,5 +1,12 @@
 package Collection;
 
+import controller.CollectionController;
+import model.CollectionDao;
+import model.CollectionDaoImpl;
+import view.CollectionView;
+import view.UserIO;
+import view.UserIOImpl;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,7 +19,11 @@ package Collection;
  */
 public class App {
     public static void main(String[] args) {
-        
+        UserIO io = new UserIOImpl();
+        CollectionView view = new CollectionView(io);
+        CollectionDao dao = new CollectionDaoImpl();
+        CollectionController controller = new CollectionController(view, dao);
+        controller.run();
     }
 }
 
