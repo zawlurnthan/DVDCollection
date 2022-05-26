@@ -43,13 +43,13 @@ public class CollectionDaoImpl implements CollectionDao {
         return dvd;
     }
 
-    @Override
-    public DVD editDvd(String id) {
-        readTextFile();
-        DVD dvd = collection.get(id);
-        writeTextFile();
-        return dvd;
-    }
+//    @Override
+//    public DVD editDvd(String id) {
+//        readTextFile();
+//        DVD dvd = collection.get(id);
+//        writeTextFile();
+//        return dvd;
+//    }
 
     @Override
     public List<DVD> getAllDvds() {
@@ -66,11 +66,11 @@ public class CollectionDaoImpl implements CollectionDao {
     @Override
     public DVD searchByTitle(String title) {
         readTextFile();
-        for (DVD dvd : collection.values())
-            if (title.equals(dvd.getTitle())) {
-                return dvd; 
-            }
-        return null;
+//        for (DVD dvd : collection.values())
+//            if (title.equals(dvd.getTitle())) {
+//                return dvd; 
+//            }
+        return collection.values().stream().filter(x -> x.getTitle().equalsIgnoreCase(title)).findAny().get();
     }
     
     // convert object to text

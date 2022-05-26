@@ -39,21 +39,35 @@ public class CollectionView {
         String director = io.readString("Please enter DVD director Name");
         String studio = io.readString("Please enter studio name");
         String userRating = io.readString("Please enter user rating");
-                
-        return new DVD(id, title, date, rating, director, studio, userRating);
+        System.out.println();    
+        
+        DVD dvd = null;
+        
+        if (id.isBlank() || title.isBlank() || date.isBlank() || 
+                rating.isBlank() || director.isBlank() || studio.isBlank() 
+                || userRating.isBlank()) {
+            io.print("Can't be blank, required to enter all field.");
+        } else {
+            dvd = new DVD(id, title, date, rating, director, studio, userRating);
+        }
+        return dvd;
     }
     
     public void displayDVDList(List<DVD> list) {
-        for (DVD dvd : list) {
-            String info = String.format("#%s, %s, %s, %s, %s, %s, %s%n", 
-                    dvd.getId(),
-                    dvd.getTitle(),
-                    dvd.getReleaseDate(),
-                    dvd.getMPAArating(),
-                    dvd.getDirector(),
-                    dvd.getStudio(),
-                    dvd.getUserRating());
-            io.print(info);
+        if (list.isEmpty()) {
+            io.print("There is no collection yet.");
+        } else {
+            for (DVD dvd : list) {
+                String info = String.format("#%s, %s, %s, %s, %s, %s, %s%n", 
+                        dvd.getId(),
+                        dvd.getTitle(),
+                        dvd.getReleaseDate(),
+                        dvd.getMPAArating(),
+                        dvd.getDirector(),
+                        dvd.getStudio(),
+                        dvd.getUserRating());
+                io.print(info);
+            }
         }
         io.readString("Please hit enter to continue.");
     }
@@ -72,7 +86,28 @@ public class CollectionView {
         } else {
             io.print("No such a dvd.");
         }
-        io.readString("Please hit enter to continue.");
+    }
+    
+    public DVD getDVDInfoToEdit(String id) {
+        io.print("\nEnter DVD info to edit.");
+        String title = io.readString("Please enter DVD title");
+        String date = io.readString("Please enter DVD releaseDate");
+        String rating = io.readString("Please enter DVD MPAA rating");
+        String director = io.readString("Please enter DVD director Name");
+        String studio = io.readString("Please enter studio name");
+        String userRating = io.readString("Please enter user rating");
+        System.out.println();
+        DVD dvd = null;
+
+        if (title.isBlank() || date.isBlank() || 
+            rating.isBlank() || director.isBlank() || studio.isBlank() 
+            || userRating.isBlank()) {
+        io.print("Can't be blank, required to enter all field.");
+        } else {
+            dvd = new DVD(id, title, date, rating, director, studio, userRating);
+        }
+                
+        return dvd;
     }
     
     public String getDVDId() {
@@ -99,6 +134,10 @@ public class CollectionView {
     
     public String getTitle() {
         return io.readString("\nEnter title to search DVD.");
+    }
+    
+    public void continueMessage() {
+        io.print("Please hit enter to continue.");
     }
     
     public void displayUnknownCommand() {

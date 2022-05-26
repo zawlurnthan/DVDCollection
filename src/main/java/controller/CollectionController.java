@@ -23,11 +23,6 @@ public class CollectionController {
         this.dao = dao;
     }
 
-    public CollectionController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
     public void run() {
         boolean keepGoing = true;
         
@@ -83,12 +78,17 @@ public class CollectionController {
     
     private void removeDVD() {
         String id = view.getDVDId();
-        dao.removeDvd(id);
+        DVD dvd = dao.removeDvd(id);
+        view.displayRemoveResult(dvd);
     }
     
     private void editDVD() {
         String id = view.getDVDId();
-        dao.editDvd(id);
+        DVD dvd = dao.getADvd(id);
+        view.displayADVD(dvd);
+        DVD editedDvd = view.getDVDInfoToEdit(id);
+        dao.addDvd(id, editedDvd);
+        view.displayEditResult(editedDvd);
     }
     
     private void listAllDVDs() {
@@ -100,11 +100,13 @@ public class CollectionController {
         String id = view.getDVDId();
         DVD dvd = dao.getADvd(id);
         view.displayADVD(dvd);
+        view.continueMessage();
     }
     
     private void searchByTitle() {
         String title = view.getTitle();
-        dao.searchByTitle(title);
+        DVD dvd = dao.searchByTitle(title);
+        view.displayADVD(dvd);
     }
     
     private void unknownCommand() {

@@ -1,4 +1,5 @@
-1::Home Alone::1990::PG::Chris Columbus::Box Office::4 star
-2::Top Gun::1986::PG 13::Tony Scott::Box Office::4 stars
-3::Lost::2004::PG::Group::Bad Robot::4.5 stars
-4::Nothing::2022::NC-17::Imposter::PornHub::5 stars
+1::Home Alone::1990::PG::Group::Box Office::4 Stars
+2::Top Gun::1986::PG-13::Tony Scott::21th Century::4 Stars
+3::Lost::2004::PG::Group::ABC Studio::4 Stars
+4::Walking Dead::2010::R::Group::AMC::5 Stars
+5::Sex On the Beach::2022::NC-17::Imposter::ABC Network::5 Stars
